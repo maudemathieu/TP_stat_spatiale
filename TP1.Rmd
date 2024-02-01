@@ -87,6 +87,77 @@ plot(st_geometry(communes_Bretagne))
 
 ```{r}
 
+communes_Bretagne$surf2 <- st_area(communes_Bretagne$geometry)
+str(communes_Bretagne$surf2)
+
+```
+
+L'unité de mesure est le m^2.
+
+### Question 10 
+
+```{r}
+
+communes_Bretagne$surf2 <- units::set_units(communes_Bretagne$surf2, "km^2")
+
+```
+
+### Question 11 
+
+```{r}
+
+str(communes_Bretagne$surf)
+str(communes_Bretagne$surf2)
+
+```
+
+cE NE SONT PAS LES MÊMES VALEURS DANS SURF ET SURF2; CELA EST NORMAL PUISQUE NOUS N'AVONS PAS LA MÊME UNITE DE MESURE.
+
+```{r}
+
+dept_bretagne <- communes_Bretagne %>%
+  group_by(dep) %>%
+  summarise(surf_dept = sum(surf))
+
+plot(st_geometry(dept_bretagne))
+
+```
+
+### Question 13
+
+```{r}
+
+fond_dept_bretagne <- communes_Bretagne %>%
+  group_by(dep) %>%
+  summarise(geometry = st_union(geometry))
+
+plot(st_geometry(fond_dept_bretagne))
+
+```
+
+### Question 14 
+
+```{r}
+
+centroid_dept_bretagne <- fond_dept %>%
+  st_centroid()
+
+plot(st_geometry(dept_bretagne))
+plot(st_centroid(centroid_dept_bretagne), add=TRUE)
+
+```
+
+### Question 15 
+
+```{r}
+
+print(st_geometry_type(centroid_dept_bretagne))
+
+```
+
+### Question 16 
+
+```{r}
 
 
 
