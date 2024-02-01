@@ -48,3 +48,46 @@ print(projection)
 ```
 
 ### Question 5 
+
+```{r}
+
+communes_Bretagne <- fond_communal %>%
+  filter(dep %in% c("22", "29", "56", "35"))%>%
+  select(code, libelle, epc, dep, surf)
+
+print(communes_Bretagne)
+
+```
+La variable géometry est également conservée.
+
+### Question 6
+
+```{r}
+
+class(communes_Bretagne)
+
+```
+
+### Question 7
+
+```{r}
+
+plot(communes_Bretagne, lwd = 2)
+
+```
+
+### Question 8
+
+```{r}
+
+plot(st_geometry(communes_Bretagne))
+
+```
+### Question 9 
+
+```{r}
+
+
+
+
+```
