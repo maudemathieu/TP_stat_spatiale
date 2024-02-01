@@ -1,0 +1,50 @@
+---
+title: "TP1"
+output: html_document
+date: "2024-02-01"
+---
+
+# TP1
+
+```{r}
+
+install.packages("dplyr")
+install.packages("sf")
+
+library(dplyr)
+library(sf)
+```
+
+### Question 1 
+
+```{r}
+
+fond_communal <- st_read("Fonds_de_carte/commune_francemetro_2021.shp", options = "ENCODING=WINDOWS-1252")
+
+```
+### Question 2 
+
+```{r}
+
+summarise(fond_communal)
+
+```
+
+### Question 3 
+
+```{r}
+
+head(fond_communal, n=10)
+
+```
+### Question 4 
+
+```{r}
+
+projection <- st_crs(fond_communal)
+
+print(projection)
+
+```
+
+### Question 5 
