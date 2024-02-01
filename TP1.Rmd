@@ -135,19 +135,17 @@ plot(st_geometry(fond_dept_bretagne))
 
 ```
 
-### Question 14 
+### Question 14 (+14-c)
 
 ```{r}
 
 centroid_dept_bretagne <- fond_dept %>%
-  st_centroid()
-
-plot(st_geometry(dept_bretagne))
-plot(st_centroid(centroid_dept_bretagne), add=TRUE)
+  st_centroid() %>% 
+  mutate(dept_lib = c("cote d'Armor", "finistere", "ile et villaine", "morbihan"))
 
 ```
 
-### Question 15 
+### Question 14-a 
 
 ```{r}
 
@@ -155,10 +153,28 @@ print(st_geometry_type(centroid_dept_bretagne))
 
 ```
 
-### Question 16 
+### Question 14-b 
+```{r}
+
+plot(st_geometry(dept_bretagne))
+plot(st_geometry(centroid_dept_bretagne), add=TRUE)
+
+```
+
+### Question 14-d
 
 ```{r}
 
-
+coordonees_centroid <- st_coordinates(centroid_dept_bretagne)
+plot(st_geometry(dept_bretagne))
+plot(st_geometry(centroid_dept_bretagne), add=TRUE)
+text(coordonees_centroid$x, coordonees_centroid$y, label = centroid_dept_bretagne$dept_lib)
 
 ```
+
+
+
+
+
+
+
