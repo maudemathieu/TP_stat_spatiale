@@ -1,0 +1,29 @@
+---
+title: "TP2"
+output: html_document
+date: "2024-02-08"
+---
+
+Téléchargement des packages : 
+
+```{r}
+install.packages("dplyr")
+install.packages("sf")
+install.packages("mapsf")
+install.packages("classInt")
+install.packages("lealet")
+
+library(dplyr) 
+library(sf) 
+library(mapsf) 
+library(classInt) 
+library(leaflet)
+``` 
+
+Téléchargement des données :
+
+```{r}
+
+metro_sf <- st_read("Fonds_de_carte/commune_francemetro_2021.shp", options = "ENCODING=WINDOWS-1252"
+
+```

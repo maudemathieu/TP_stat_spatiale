@@ -177,4 +177,3 @@ text(coordonees_centroid$x, coordonees_centroid$y, label = centroid_dept_bretagn
 
 
 
-
