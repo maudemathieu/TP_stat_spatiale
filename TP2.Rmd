@@ -12,18 +12,49 @@ install.packages("sf")
 install.packages("mapsf")
 install.packages("classInt")
 install.packages("lealet")
+install.packages("lealet")
+install.packages("readxl")
 
 library(dplyr) 
 library(sf) 
 library(mapsf) 
 library(classInt) 
 library(leaflet)
+library(readxl)
 ``` 
 
 Téléchargement des données :
 
 ```{r}
 
-metro_sf <- st_read("Fonds_de_carte/commune_francemetro_2021.shp", options = "ENCODING=WINDOWS-1252"
+metro_sf <- st_read("Fonds_de_carte/commune_francemetro_2021.shp", options = "ENCODING=WINDOWS-1252")
+str(metro_sf)
 
 ```
+
+```{r}
+
+pop_legal <- read_excel("Pop_legales_2019.xlsx")
+
+```
+
+# Question 1
+
+```{r}
+
+pop_legal <- pop_legal %>%
+  mutate(COM=if_else(substr(COM,1,3)=="751","75056",COM)) %>%
+  group_by(code=COM) %>%
+  summarise(pop=sum(PMUN19))
+
+pop_legal$density <- pop_legal$pop / metro_sf$surf
+
+```
+
+# Question 2 
+
+```{r}
+
+
+```
+
